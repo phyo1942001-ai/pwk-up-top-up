@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PWK UC TOP-UP</title>
+
+<!-- SEO -->
+<meta name="title" content="PWK UC TOP-UP | PUBG Mobile UC Shop Myanmar">
+<meta name="description" content="PWK UC TOP-UP – PUBG Mobile UC ကို မြန်မာငွေနဲ့ အမြန်ဆုံး၊ လုံခြုံစိတ်ချရစွာ ဝယ်ယူနိုင်သော Online UC Shop">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root{--gold:#f5b400;}
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  color:#fff;
+  background:
+  linear-gradient(rgba(0,0,0,.9),rgba(0,0,0,.95)),
+  url('https://wallpaperaccess.com/full/2346295.jpg');
+  background-size:cover;
+  background-attachment:fixed;
+}
+header{
+  background:
+  linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.9)),
+  url('https://wallpapers.com/images/hd/pubg-4k-character-explosion-r4j9c1x5r0x7fn0a.jpg');
+  background-size:cover;
+  padding:90px 20px;
+  text-align:center;
+  border-bottom:4px solid var(--gold);
+}
+header h1{
+  margin:0;
+  font-size:3em;
+  color:var(--gold);
+}
+header p{
+  letter-spacing:3px;
+  color:#ccc;
+}
+.card{
+  max-width:520px;
+  margin:30px auto;
+  background:rgba(15,15,15,.95);
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 0 30px rgba(0,0,0,.8);
+}
+.card h3{
+  text-align:center;
+  color:var(--gold);
+}
+input{
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #444;
+  background:#000;
+  color:#fff;
+  font-size:16px;
+}
+.price-box{
+  background:#111;
+  border-left:5px solid var(--gold);
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+  margin-top:15px;
+}
+.uc{
+  font-size:1.5em;
+  color:var(--gold);
+}
+.price{
+  font-size:1.3em;
+  color:#00ff99;
+}
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:10px;
+  font-size:1.1em;
+  font-weight:bold;
+  margin-top:12px;
+  cursor:pointer;
+}
+.tg{background:#0088cc;color:#fff;}
+.vb{background:#665cac;color:#fff;}
+.payment{
+  border:2px dashed var(--gold);
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>PWK UC TOP-UP</h1>
+  <p>FAST • SAFE • INSTANT DELIVERY</p>
+</header>
+
+<div class="card">
+  <h3><i class="fas fa-user"></i> Player Information</h3>
+  <input id="pid" placeholder="Enter Player ID">
+</div>
+
+<div class="card">
+  <h3><i class="fas fa-gem"></i> Buy UC</h3>
+  <input type="number" id="uc" min="1" max="100000"
+  placeholder="Enter UC Amount (1 - 100000)" oninput="calc()">
+
+  <div class="price-box">
+    <div class="uc" id="ucShow">0 UC</div>
+    <div class="price" id="priceShow">0 MMK</div>
+  </div>
+
+  <button class="tg" onclick="order('tg')">
+    <i class="fab fa-telegram"></i> Order via Telegram
+  </button>
+
+  <button class="vb" onclick="order('vb')">
+    <i class="fab fa-viber"></i> Order via Viber
+  </button>
+</div>
+
+<div class="card">
+  <div class="payment">
+    <h3>Payment Method</h3>
+    <p>KPay / Wave</p>
+    <p><b>09424910359</b></p>
+    <p>Name: <b>Pho Wai Kyaw</b></p>
+  </div>
+</div>
+
+<script>
+const rate = 55; // 1 UC = 55 MMK
+
+function calc(){
+  let uc = document.getElementById("uc").value || 0;
+  let price = uc * rate;
+  document.getElementById("ucShow").innerText = uc + " UC";
+  document.getElementById("priceShow").innerText =
+    price.toLocaleString() + " MMK";
+}
+
+function order(type){
+  let pid = document.getElementById("pid").value;
+  let uc = document.getElementById("uc").value;
+  if(!pid || !uc){
+    alert("Player ID နဲ့ UC Amount ဖြည့်ပါ");
+    return;
+  }
+  let price = uc * rate;
+  let msg =
+`PWK UC TOP-UP ORDER
+------------------
+Player ID: ${pid}
+UC: ${uc}
+Amount: ${price} MMK
+------------------
+Paid`;
+
+  if(type==="tg"){
+    window.open(`https://t.me/PWKTOP?text=${encodeURIComponent(msg)}`);
+  }else{
+    window.open(`viber://chat?number=+959424910359&text=${encodeURIComponent(msg)}`);
+  }
+}
+</script>
+
+</body>
+</html>
